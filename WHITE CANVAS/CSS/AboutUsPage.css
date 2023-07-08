@@ -1,0 +1,76 @@
+* {box-sizing: border-box}
+body {margin:0}
+ 
+/* --------- About us navigation -----------*/
+
+.AboutUsNavigation{
+	width:100%;
+	display:flex;
+	background-color:white;
+}
+
+
+.InnerAboutUsNavigation{
+	width:60%;
+	height:100%;
+	margin-left: auto;
+    margin-right: auto;
+	text-align:center;
+	padding: 10px;
+}
+
+.InnerAboutUsNavigation a{
+	font-size:24px;
+	text-decoration:none;
+	margin:15px;
+	
+}
+
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+  color: #112D4E;
+}
+
+.hover-underline-animation:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #112D4E;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* --------- About us navigation end -----------*/
+
+/* --------- content -----------*/
+
+.OuterContainer{
+	width: 100%;
+	height: 600px;
+	background-color:#F9F7F7;
+}
+
+.InnerContainer{
+	width: 80%;
+	height: 100%;
+	margin-left: auto;
+    margin-right: auto;
+	display: flex;
+	padding: 5px;
+	background-color:#F9F7F7;
+}
+
+.ImageOurStory{
+	width:90%;
+	  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}

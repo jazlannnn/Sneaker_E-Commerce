@@ -1,0 +1,7 @@
+
+1. This website is developed using a local host via Xampp server. 
+
+2. local host url to redirect to the index page: 
+   http://localhost/Sneaker%20E-Commerse/WHITE%20CANVAS/index.php
+
+ 

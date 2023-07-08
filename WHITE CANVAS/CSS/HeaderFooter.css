@@ -1,0 +1,276 @@
+* {box-sizing: border-box}
+ body {margin:0}
+ 
+ /* --------- Navigation ---------*/
+:root{
+    --green:#27ae60;
+    --black:#192a56;
+	--light-color:#666;
+    --box-shadow:0 .5rem 1.5rem rgba(0,0,0,.1);
+}
+
+html{
+    overflow-x: hidden;
+    scroll-padding-top: 5.5rem;
+    scroll-behavior: smooth;
+}
+
+header{
+    position: static;
+    top:0; left: 0; right:0;
+	background: I#fff;
+    padding:1rem 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    box-shadow: var(--box-shadow);
+}
+
+header .logo{
+    color:var(--black);
+    font-size: 1.4rem;
+    font-weight: bolder;
+}
+
+header .logo i{
+    color:#27ae60;
+}
+
+
+header .navbar a{
+	text-decoration: none;
+    font-size: 1.1rem;
+    border-radius: .5rem;
+    padding:.5rem 1.5rem;
+    color:var(--light-color);
+} 
+
+header .navbar #active{
+    color:black;
+    background: #DBE2EF;
+}
+
+.dropbtn {
+	padding:.5rem 1.5rem;
+	font-size: 1.1rem;
+	border: none;
+	cursor: pointer;
+	border-radius: .5rem;
+	background-color:white;
+	text-decoration: none;
+	color:var(--light-color);
+	font-family: "Times New Roman", Times, serif;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  min-width: 300px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius:15px;
+  background-color: white;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #DBE2EF; color:black; border-radius: .5rem;}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #DBE2EF;
+  color:black;
+}
+
+header .icon-bar i,
+header .icon-bar a{
+    cursor: pointer;
+    height:2.5rem;
+    line-height: 2.5rem;
+    width:2.5rem;
+    text-align: center;
+    font-size: 1.5rem;
+    color:var(--black);
+    border-radius: 50%;
+    background: #eee;
+}
+
+header .icon-bar i:hover,
+header .icon-bar a:hover{
+    color: black;
+    background: #DBE2EF;
+    transform: rotate(360deg);
+}
+
+ /* --------- search button ---------*/
+
+.openBtn {
+  background: #f1f1f1;
+  border: none;
+  padding: 10px 15px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.openBtn:hover {
+  background: #bbb;
+}
+
+.overlay {
+  height: 100%;
+  width: 100%;
+  display: none;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.9);
+}
+
+.overlay-content {
+  position: relative;
+  top: 46%;
+  width: 80%;
+  text-align: center;
+  margin-top: 30px;
+  margin: auto;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+  cursor: pointer;
+  color: white;
+}
+
+.overlay .closebtn:hover {
+  color: #ccc;
+}
+
+.overlay input[type=text] {
+  padding: 15px;
+  font-size: 17px;
+  border: none;
+  float: left;
+  width: 80%;
+  background: white;
+}
+
+.overlay input[type=text]:hover {
+  background: #f1f1f1;
+}
+
+.overlay button {
+  float: left;
+  width: 20%;
+  padding: 15px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.overlay button:hover {
+  background: #bbb;
+}
+
+ /* --------- Navigation End ---------*/
+
+/* --------- Footer -----------*/
+.containerS{
+   max-width: 1170px;
+   margin:auto;
+}
+.rows{
+   display: flex;
+   flex-wrap: wrap;
+}
+ul{
+    List-style: none;
+	padding-Left: 5px;
+}
+.footer{
+   background-color: #24262b;
+   padding: 70px 0;
+}
+
+.footer-col{
+  width: 25%;
+  padding: 0 15px;
+}
+
+.footer-col h4{
+   font-size: 18px;
+   color: #ffffff;
+   text-transform: capitalize;
+   margin-bottom: 35px;
+   font-weight: 500; 
+   position: relative; 
+}
+
+.footer-col h4::before{
+   content: '';
+   position: absolute;
+   Left:0;
+   bottom: -10px;
+   background-color: grey;
+   height: 2px;
+   box-sizing: border-box;
+   width: 50px;
+}
+
+.footer-col ul li:not(:last-child){
+   margin-bottom: 10px;
+}
+.footer-col ul li a{
+   font-size: 16px;
+    text-transform: capitalize;
+    color: #ffffff;
+    text-decoration: none;
+   font-weight: 300;
+   color: #bbbbbb;
+   display: block;
+   transition: all 0.3s ease; 
+}
+
+.footer-col ul li a:hover{
+   color: #ffffff;
+   padding-Left: 10px;
+}
+
+.footer-col .social-links a{
+   display: inline-block;
+   height: 40px;
+   width: 40px;
+   background-color: rgba(255,255,255,0.2);
+   margin:0 10px 10px 0;
+   text-align: center;
+   Line-height: 40px;
+   border-radius: 50%;
+   color: #ffffff;
+   transition: all 0.5s ease; 
+}
+
+.footer-col .social-links a:hover{
+   color: #24262b;
+   background-color: #ffffff;
+}
+
+/* --------- Footer End -----------*/
