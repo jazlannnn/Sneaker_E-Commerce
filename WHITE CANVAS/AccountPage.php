@@ -81,16 +81,6 @@
 <div>
 <!-- even more HTML content here -->
 </div>
-<?php
-function console_log($username, $with_script_tags = true) {
-    $js_code = 'console.log(' . json_encode($username, JSON_HEX_TAG) . 
-');';
-    if ($with_script_tags) {
-        $js_code = '<script>' . $js_code . '</script>';
-    }
-    echo $js_code;
-}?>
-<?= console_log($_SESSION['user_id']); ?>
                 <button class="openbtnX" onclick="openNav()">☰ Open Sidebar</button>
 
                 <h1 style="text-align:center; font-size: 40px; ">My Account</h1>
@@ -112,32 +102,32 @@ function console_log($username, $with_script_tags = true) {
                     <?php
                         if (isset($_SESSION['user_id'])) {
                             $query = "SELECT *
-          FROM customer
-          WHERE Customer_ID = :user_id";
-$stmt = oci_parse($dbconn, $query);
-oci_bind_by_name($stmt, ':user_id', $_SESSION['user_id']);
-oci_execute($stmt);
+                            FROM customer
+                            WHERE Customer_ID = :user_id";
+                            $stmt = oci_parse($dbconn, $query);
+                            oci_bind_by_name($stmt, ':user_id', $_SESSION['user_id']);
+                            oci_execute($stmt);
 
-$row = oci_fetch_assoc($stmt);
-if ($row) {
-    echo "<ol class='listStyle'>
-            <li><b>Username     :</b> " . $row['CUSTOMER_USERNAME'] . "</li>
-            <li><b>Password     :</b> " . $row['CUSTOMER_PASSWORD'] . "</li>
-            <li><b>Email        :</b> " . $row['CUSTOMER_EMAIL'] . "</li>
-            <li><b>Phone num.   :</b> " . $row['CUSTOMER_PHONENUMBER'] . "</li>
-            <li><b>Address      :</b> " . $row['CUSTOMER_ADDRESS'] . "</li>
-          </ol>";
+                            $row = oci_fetch_assoc($stmt);
+                            if ($row) {
+                                echo "<ol class='listStyle'>
+                                        <li><b>Username     :</b> " . $row['CUSTOMER_USERNAME'] . "</li>
+                                        <li><b>Password     :</b> " . $row['CUSTOMER_PASSWORD'] . "</li>
+                                        <li><b>Email        :</b> " . $row['CUSTOMER_EMAIL'] . "</li>
+                                        <li><b>Phone num.   :</b> " . $row['CUSTOMER_PHONENUMBER'] . "</li>
+                                        <li><b>Address      :</b> " . $row['CUSTOMER_ADDRESS'] . "</li>
+                                    </ol>";
 
-    $Uname = $row['CUSTOMER_USERNAME'];
-    $Upassword = $row['CUSTOMER_PASSWORD'];
-    $Uemail = $row['CUSTOMER_EMAIL'];
-    $UphoneNum = $row['CUSTOMER_PHONENUMBER'];
-    $Uaddress = $row['CUSTOMER_ADDRESS'];
-} else {
-    echo "No user found.";
-}
+                                $Uname = $row['CUSTOMER_USERNAME'];
+                                $Upassword = $row['CUSTOMER_PASSWORD'];
+                                $Uemail = $row['CUSTOMER_EMAIL'];
+                                $UphoneNum = $row['CUSTOMER_PHONENUMBER'];
+                                $Uaddress = $row['CUSTOMER_ADDRESS'];
+                            } else {
+                                echo "No user found.";
+                            }
 
-oci_free_statement($stmt); // Free the statement after use
+                            oci_free_statement($stmt); // Free the statement after use
 
                         } else {    
                             $Uname = 'None';    
@@ -171,8 +161,7 @@ oci_free_statement($stmt); // Free the statement after use
                                 <form class="modal-content" action="AccountPage.php" method="post">
                                     <div class="containers">
                                         <h1>Update your account</h1>
-                                        <p>Please fill in the specific detail to update your account.</p```php
-                                        <hr>
+                                        <p>Please fill in the specific detail to update your account.</p>
 
                                         <div style="display:block; margin-bottom: 10px;  text-align:center; ">
                                             <input
@@ -257,20 +246,14 @@ oci_free_statement($stmt); // Free the statement after use
             }
             /*-------------------------- Sidebar ends ------------------------------*/
 
-            /* -------------------------- Calling header and footer fucntion
- * ------------------------------
- */
+            /* -------------------------- Calling header and footer fucntion ------------------------------*/
             $(function () {
                 $("#header").load("Header.php");
                 $("#footer").load("Footer.php");
             });
-            /* -------------------------- header and footer fucntion end
- * ------------------------------
- */
+            /* -------------------------- header and footer fucntion end ------------------------------*/
 
-            /* -------------------------- header and footer fucntion end
- * ------------------------------
- */
+            /* -------------------------- header and footer fucntion end ------------------------------*/
             // Get the modal
             var modal = document.getElementById('id01');
 
@@ -280,9 +263,7 @@ oci_free_statement($stmt); // Free the statement after use
                     modal.style.display = "none";
                 }
             }
-            /* -------------------------- header and footer fucntion end
- * ------------------------------
- */
+            /* -------------------------- header and footer fucntion end ------------------------------*/
         </script>
 
     </body>

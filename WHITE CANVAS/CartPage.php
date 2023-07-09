@@ -78,50 +78,48 @@
 		$userID = $_SESSION["user_id"]; // retrieve user id
 
 		// select customer info
-		$sql = "SELECT * FROM `customer`
-		WHERE Customer_ID LIKE $userID"; 
-					
-		$result = mysqli_query($connect, $sql);
+		$sql = "SELECT * FROM customer WHERE Customer_ID = $userID"; 
+		$result = oci_parse($dbconn, $sql);
+		oci_execute($result);
 							 
-		if(mysqli_num_rows($result) > 0)
+		if(oci_fetch($result))
 		{	
-			while($row = mysqli_fetch_assoc($result))
-			{
-				$customerid = $row['Customer_ID'];
-				$username = $row['Customer_Username'];
-				$address = $row['Customer_Address'];
-				$PhoneNumber = $row['Customer_PhoneNumber'];					
-			}
+			$customerid = oci_result($result, "CUSTOMER_ID");
+			$username = oci_result($result, "CUSTOMER_USERNAME");
+			$address = oci_result($result, "CUSTOMER_ADDRESS");
+			$PhoneNumber = oci_result($result, "CUSTOMER_PHONENUMBER");					
 		}
 		else 
 			"query fail";
 		
 		// create order table for the customer
-		$date=date("Y/m/d");
-		$sql = "INSERT INTO `orders` (Orders_Date, Orders_TotalPrice, Orders_CustomerFK)
-			VALUES ('$date','$TotalPrice', '$customerid')";
+		$date = date("Y/m/d");
+		$sql = "INSERT INTO orders (Orders_Date, Orders_TotalPrice, Orders_CustomerFK)
+				VALUES ('$date', '$TotalPrice', '$customerid')";
 		
-			$sendsql = mysqli_query($connect, $sql);
+		$sendsql = oci_parse($dbconn, $sql);
+		oci_execute($sendsql);
 		
-			if($sendsql)
-			{	
-				//echo "success!";
-				$last_id = mysqli_insert_id($connect); // return last newly created ID
-				$_SESSION["order"] = $last_id;
-			}
-			else 
-				echo "failed!";	
-			
+		if($sendsql)
+		{	
+			//echo "success!";
+			$last_id = oci_fetch_assoc($dbconn); // return last newly created ID
+			$_SESSION["order"] = $last_id;
+		}
+		else 
+			echo "failed!";	
+		
 		// create order_details table 	
 		foreach($_SESSION['cart'] as $keys => $values){
 			$TotalPricePerProduct = 0;
 			$TotalPricePerProduct = $TotalPricePerProduct + ($values['product_price'] * $values['product_quantity']); 
 			
-			$sql = "INSERT INTO `order_details` (OrderDetails_Size,OrderDetails_Quantity, OrderDetails_SubTotal, OrderDetails_OrderFK, OrderDetails_ProductFK)
-			VALUES ('$values[product_size]','$values[product_quantity]','$TotalPricePerProduct', '$last_id', '$values[product_id]')";
-		
-			$sendsql = mysqli_query($connect, $sql);
-		
+			$sql = "INSERT INTO order_details (OrderDetails_Size, OrderDetails_Quantity, OrderDetails_SubTotal, OrderDetails_OrderFK, OrderDetails_ProductFK)
+					VALUES ('$values[product_size]', '$values[product_quantity]', '$TotalPricePerProduct', '$last_id', '$values[product_id]')";
+			
+			$sendsql = oci_parse($dbconn, $sql);
+			oci_execute($sendsql);
+			
 			if($sendsql)
 			{	
 				//echo "ok!";
@@ -164,7 +162,7 @@
 		<!--------------------- Cart content -------------------->
 		
 		<div style="height: 2000px;display:flex; width:100%;">
-			<div id="mySidebar" class="sidebar">
+			<div id="mySidebar"class="sidebar">
 				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
 				<a href="AccountPage.php">Account</a>
 				<a href="CartPage.php">My Cart</a>
@@ -202,24 +200,24 @@
 								if(isset($_SESSION['cart'])){
 							
 									$product_id = array_column($_SESSION['cart'],'product_id');
-									$sql = "SELECT * FROM `product`";
-									$result = mysqli_query($connect, $sql);
+									$sql = "SELECT * FROM product";
+									$result = oci_parse($dbconn, $sql);
+									oci_execute($result);
 								
-									if(mysqli_num_rows($result) > 0)
+									if(oci_fetch($result))
 									{	
-										while($row = mysqli_fetch_assoc($result))
-										{
+										do {
 											foreach($_SESSION['cart'] as $keys => $values){
 														
-												if($values['product_id'] == $row['Product_ID'])
+												if($values['product_id'] == oci_result($result, "PRODUCT_ID"))
 												{	
 													// output cart item selected
-													cartElement($values['product_name'],$row['Product_Image'],$values['product_price'],$values['product_id'],$values['product_quantity'],$row['Product_Desc'],$row['Product_Gender'],$values['product_size']);
+													cartElement($values['product_name'], oci_result($result, "PRODUCT_IMAGE"), $values['product_price'], $values['product_id'], $values['product_quantity'], oci_result($result, "PRODUCT_DESC"), oci_result($result, "PRODUCT_GENDER"), $values['product_size']);
 													$Total = $Total + ($values['product_price'] * $values['product_quantity']);	// total price all item
 													$Item = $Item + $values['product_quantity']; // total quantity all item
 												}
 											}
-										}
+										} while (oci_fetch($result));
 										
 										$Delivery += 10.00;
 										$SubTotal += $Total;

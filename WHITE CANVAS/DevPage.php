@@ -56,42 +56,49 @@ tr:nth-child(even) {background-color: #f2f2f2;}
 		
 		<div class="InnerContainer">
 			<table>
-  <tr>
-  <th>Images</th>
-  <th>Name</th>
-  <th>Position</th>
-  <th>Contact Number</th>
-  <th>Email</th>
-  </tr>
-  <tr>
-  <td><img src="Images/Developers/dev1.jpg" style="width: 30%" /></td>
-  <td>AZLIE JOHARI</td>
-  <td>Project Manager</td>
-  <td>018-6689368</td>
-  <td>johariazlie@gmail.com</td>
-  </tr>
-  <tr>
-  <td><img src="Images/Developers/dev2.png" style="width: 30%" /></td>
-  <td>MUHD. DZIKRULLAH BIN KALANA</td>
-  <td>Database Designer</td>
-  <td>012-3013035</td>
-  <td>muhddzikrullah199@gmail.com</td>
-  </tr>
-  <tr>
-  <td><img src="Images/Developers/dev4.png" style="width: 30%" /></td>
-  <td>MUHAMMAD FIRDAUS BIN ROSLI</td>
-  <td>Programmer</td>
-  <td>019-9422124</td>
-  <td>mfirdausrosli13@gmail.com</td>
-  </tr>
-  <tr>
-  <td><img src="Images/Developers/dev3.png" style="width: 30%" /></td>
-  <td>MUHAMMAD AIMAN BIN KAMARUDIN</td>
-  <td>Programmer</td>
-  <td>016-6714542</td>
-  <td>aimansmkam@gmail.com</td>
-  </tr>
-</table>
+			<tr>
+			<th>Images</th>
+			<th>Name</th>
+			<th>Position</th>
+			<th>Contact Number</th>
+			<th>Email</th>
+			</tr>
+			<tr>
+			<td><img src="Images/Developers/dev1.jpeg" style="width: 30%" /></td>
+			<td>NURADAM DANIAL BIN NOORMAN</td>
+			<td>Project Manager</td>
+			<td>011-51550578</td>
+			<td>nuradam.dnl@gmail.com</td>
+			</tr>
+			<tr>
+			<td><img src="Images/Developers/dev2.jpg" style="width: 30%" /></td>
+			<td>RAIMI IKHWAN BIN ROSLIN</td>
+			<td>Database Designer</td>
+			<td>017-2901246</td>
+			<td>raimiikhwan21@gmail.com</td>
+			</tr>
+			<tr>
+			<td><img src="Images/Developers/" style="width: 30%" /></td>
+			<td>MUHAMMAD HASIF BIN JASMI APINDI</td>
+			<td>Programmer</td>
+			<td>011-28020227</td>
+			<td>hasifj2207@gmail.com</td>
+			</tr>
+			<tr>
+			<td><img src="Images/Developers/dev4.jpg" style="width: 30%" /></td>
+			<td>MUHAMMAD HAZIQ BIN HASROL ALIAS</td>
+			<td>Programmer</td>
+			<td>011-60708004</td>
+			<td>haziqhasrol@gmail.com</td>
+			</tr>
+			<tr>
+			<td><img src="Images/Developers/dev5.jpg" style="width: 30%" /></td>
+			<td>MUHAMMAD JAZLAN BIN SUKMAN SUZZAK</td>
+			<td>Interface Designerr</td>
+			<td>013-4435634</td>
+			<td>jazlanmuhd123@gmail.com</td>
+			</tr>
+			</table>
 		</div>
 	<br><br>	
 		
