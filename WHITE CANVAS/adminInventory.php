@@ -22,6 +22,15 @@
         
         $filesExt = explode('.',$fileName);
         $fileActualExt = strtolower(end($filesExt));
+        // console log function
+                                function console_log($name, $with_script_tags = true) {
+                                    $js_code = 'console.log(' . json_encode($name, JSON_HEX_TAG) . 
+                                ');';
+                                    if ($with_script_tags) {
+                                        $js_code = '<script>' . $js_code . '</script>';
+                                    }
+                                    echo $js_code;
+                                }
         
         // pick what types of files are allowed
         $allowed = array('jpg', 'pdf', 'png');
@@ -228,16 +237,27 @@
                 <?php
                     $sql = "SELECT * FROM product";
 
-                    $stmt = oci_parse($dbconn, $sql);
-                    oci_execute($stmt);
+                    $stmt2 = oci_parse($dbconn, $sql);
+                    oci_execute($stmt2);
 
                     if(isset($_POST['updateBtn'])) {
                         $quantity = $_POST['quantity'];
                         $update = $_POST['selectOption'];
                         $_SESSION['updated'] = $update;
                         $productName = $_POST['productName'];
+                        
+                        // console log function
+                        function console_log($name, $with_script_tags = true) {
+                            $js_code = 'console.log(' . json_encode($name, JSON_HEX_TAG) . 
+                        ');';
+                            if ($with_script_tags) {
+                                $js_code = '<script>' . $js_code . '</script>';
+                            }
+                            echo $js_code;
+                        }
+                        console_log($stmt2);
 
-                        while($row = oci_fetch_assoc($stmt)) {
+                        while($row = oci_fetch_assoc($stmt2)) {
                             if($productName == $row['PRODUCT_NAME']) {
                                 $updatedProductID = $row['PRODUCT_ID'];
                                 $date = date("y/m/d");
@@ -246,25 +266,31 @@
                                 if($update == 'Add') {
                                     $_SESSION["addQuantity"] = $quantity;
                                     $newQuantity = $row['PRODUCT_QUANTITY'] + $quantity;
+                                    $sql = "UPDATE PRODUCT SET PRODUCT_QUANTITY = :newQuantity WHERE PRODUCT_NAME = :productName";
+                                    $stmt3 = oci_parse($dbconn, $sql);
+
+                                    oci_bind_by_name($stmt3, ':newQuantity', $newQuantity);
+                                    oci_bind_by_name($stmt3, ':productName', $productName);
+                                    oci_execute($stmt3);
+
+                                    if ($stmt3) {
+                                        oci_commit($dbconn);
+                                        echo "<script>alert('Product quantity has been updated!');</script>";
+                                    } else {
+                                        oci_rollback($dbconn);
+                                        $error = oci_error($stmt3);
+                                        echo "Failed: " . $error['message'];
+                                }
                                 } else {
                                     $_SESSION["deleteQuantity"] = $quantity;
                                     $newQuantity = $row['PRODUCT_QUANTITY'] - $quantity;
-                                }
-
-                                // Update the quantity in the PRODUCT table
-                                $sql = "UPDATE product SET PRODUCT_QUANTITY = :newQuantity WHERE PRODUCT_NAME = :productName";
-                                $stmt = oci_parse($dbconn, $sql);
-                                oci_bind_by_name($stmt, ':newQuantity', $newQuantity);
-                                oci_bind_by_name($stmt, ':productName', $productName);
-                                oci_execute($stmt, OCI_DEFAULT);
-
-                                if ($result) {
-                                    oci_commit($dbconn);
-                                    echo "<script>alert('Product quantity has been updated!');</script>";
-                                } else {
-                                    oci_rollback($dbconn);
-                                    $error = oci_error($stmt);
-                                   echo "Failed: " . $error['message'];
+                                    $sql = "UPDATE PRODUCT SET PRODUCT_QUANTITY = :newQuantity WHERE PRODUCT_NAME = :productName";
+                                    $stmt3 = oci_parse($dbconn, $sql);
+                                    oci_execute($stmt3);
+                                    if($stmt3){
+                                        oci_commit($dbconn);
+										echo "<script>alert('Current product quantity have been deleted!');</script>";
+											 }
                                 }
                             }
                         }
@@ -288,7 +314,10 @@
                         </thead>
                         <tbody>
                             <?php
-                                while($row = oci_fetch_assoc($stmt)){
+                                $sql = "SELECT * FROM PRODUCT";
+                                $result2 = oci_parse($dbconn, $sql);
+                                oci_execute($result2);
+                                while($row = oci_fetch_assoc($result2)){
                                     echo "<tr>";
                                     echo "<td style='text-align:center;'>" . $row['PRODUCT_ID'] . "</td>";
                                     echo "<td style='text-align:center;'>" . $row['PRODUCT_NAME'] . "</td>";

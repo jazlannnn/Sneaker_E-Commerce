@@ -111,7 +111,7 @@
                 </script>
                 <div class="admin-name">
                     <img src="img/adminIcon2.png" style="height:80px; width:85px;">
-                    <h3><?php echo $_SESSION['admin_Username'] ?></h3>
+                    <h3><?php echo $_SESSION['adminUsername'] ?></h3>
                 </div>                
             </div>
              
