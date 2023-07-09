@@ -12,7 +12,7 @@
 				WHERE
 					orders.Orders_ID LIKE $_SESSION[order]";	
 					
-		$sendsql = mysqli_query($connect, $sql);
+		$sendsql = oci_parse($dbconn, $sql);
 		
 		if($sendsql)
 		{
@@ -114,14 +114,15 @@
 												WHERE
 													orders.Orders_ID LIKE '$_SESSION[order]'";
 												
-										$result = mysqli_query($connect, $sql);
-										$result2 = mysqli_query($connect, $sql2);
-								
+										$result = oci_parse($dbconn, $sql);
+										$result2 = oci_parse($dbconn, $sql2);
+
+										oci_execute($result);
 										if($result)
 										{
-											if(mysqli_num_rows($result) > 0)
+											if($result > 0)
 											{	
-												while($row = mysqli_fetch_assoc($result)){
+												while(($row = oci_fetch_array($result))){
 												
 												echo"<ol class='listStyle'>
 													<li><b>Username     :</b> $row[Customer_Username] </li>
@@ -141,6 +142,7 @@
 											"query failed!";
 										}
 										
+										oci_execute($result2);
 										if($result2)
 										{
 											echo "<table id='customers'> 
@@ -152,11 +154,11 @@
 													<th> <font face='Arial'>Subtotal</font> </th> 
 												</tr>";
 											
-											if(mysqli_num_rows($result2) > 0)
+											if($result2 > 0)
 											{	
 												
 													
-												while($row = mysqli_fetch_assoc($result2))
+												while(($row = oci_fetch_array($result2)))
 												{
 													echo 
 													"<tr> 
