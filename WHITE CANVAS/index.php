@@ -1,6 +1,7 @@
 <?php
 	include "config.php";
 	require_once('Function.php');
+	 echo $username; 
 ?>
 
 <!DOCTYPE html>

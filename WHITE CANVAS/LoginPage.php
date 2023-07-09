@@ -79,6 +79,10 @@
 	// 		}
 	// }
 
+	
+	
+	session_start(); // Start the session
+
 	include "config.php";
 	
 	if(isset($_POST["Submit_Button"]))
@@ -87,14 +91,16 @@
 		$password = $_POST["Password"]; 
 		$user = $_POST["User"];
 		
-		if( $user == "Customer")
+		if($user == "Customer")
 		{ 
 			$sql = "SELECT * 
 					FROM customer
-					WHERE Customer_Username = '$username' 
-					AND Customer_Password = '$password'";
+					WHERE Customer_Username = :username
+					AND Customer_Password = :password";
 				
 			$sendsql = oci_parse($dbconn, $sql);
+			oci_bind_by_name($sendsql, ":username", $username);
+			oci_bind_by_name($sendsql, ":password", $password);
 			
 			if(oci_execute($sendsql))
 			{
@@ -103,7 +109,7 @@
 					$_SESSION['user_id'] = oci_result($sendsql, 'CUSTOMER_ID');			
 					
 					echo "<script> 
-							alert('You have successfully logged in, Welcome $username !!!');
+							alert('You have successfully logged in, Welcome $username!');
 							window.location.href='index.php';
 						</script>"; 
 					exit();
@@ -116,17 +122,19 @@
 			}
 			else
 			{
-				echo "Query failed";
+				echo "Query failed: " . oci_error($dbconn);
 			}	
 		}
-		else if ( $user == "Admin")
+		else if ($user == "Admin")
 		{
 			$sql = "SELECT * 
 					FROM admin
-					WHERE Admin_Username = '$username' 
-					AND password = '$password'";
+					WHERE Admin_Username = :username
+					AND password = :password";
 				
 			$sendsql = oci_parse($dbconn, $sql);
+			oci_bind_by_name($sendsql, ":username", $username);
+			oci_bind_by_name($sendsql, ":password", $password);
 			
 			if(oci_execute($sendsql))
 			{
@@ -135,14 +143,18 @@
 					$_SESSION['adminUsername'] = oci_result($sendsql, 'ADMIN_USERNAME');
 					$_SESSION['adminID'] = oci_result($sendsql, 'ADMIN_ID');
 					
-					header("Location:adminHome.php"); 
+					header("Location: adminHome.php"); 
 					exit();
+				}
+				else 
+				{
+					echo "<script>alert('You entered the wrong password')</script>";
+					echo "<script>window.location = 'LoginPage.php'</script>";
 				}
 			}
 			else
 			{
-				echo "<script>alert('You entered the wrong password')</script>";
-				echo "<script>window.location = 'LoginPage.php'</script>";
+				echo "Query failed: " . oci_error($dbconn);
 			}
 		}
 		else 
@@ -156,7 +168,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>	White Canvas | Login page</title>
+		<title>White Canvas | Login page</title>
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -208,7 +220,7 @@
 					</div><br>
 					
 					<div>
-						<p>Dont have an account?&#160 <a style="text-decoration:none" href="RegisterPage.php">Register here</a> </p>
+						<p>Don't have an account?&#160 <a style="text-decoration:none" href="RegisterPage.php">Register here</a> </p>
 					</div>
 				</div>
 			</div>
