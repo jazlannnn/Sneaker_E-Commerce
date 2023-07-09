@@ -90,7 +90,7 @@ function console_log($username, $with_script_tags = true) {
     }
     echo $js_code;
 }?>
-<?= console_log($_SESSION['user_id']); ?>
+
                 <button class="openbtnX" onclick="openNav()">☰ Open Sidebar</button>
 
                 <h1 style="text-align:center; font-size: 40px; ">My Account</h1>
