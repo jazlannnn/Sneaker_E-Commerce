@@ -1,7 +1,20 @@
 <?php
 	include "config.php";
 	require_once('Function.php');
-	 echo $username; 
+	function console_log($name, $with_script_tags = true) {
+		$js_code = 'console.log(' . json_encode($name, JSON_HEX_TAG) . 
+	');';
+		if ($with_script_tags) {
+			$js_code = '<script>' . $js_code . '</script>';
+		}
+		echo $js_code;
+	}
+	
+	if(isset($_SESSION['user_id']))
+		console_log("kenaaa"); 
+	else
+		console_log("tak kena"); 
+		
 ?>
 
 <!DOCTYPE html>
@@ -21,6 +34,7 @@
 	</head>
 	
 	<body onload="currentSlide(1)">
+	
 	
 		<!--------------------- Header (calling header function)-------------------->
 		<div id="header"></div>

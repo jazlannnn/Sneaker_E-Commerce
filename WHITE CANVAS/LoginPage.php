@@ -79,9 +79,6 @@
 	// 		}
 	// }
 
-	
-	
-	session_start(); // Start the session
 
 	include "config.php";
 	
@@ -180,6 +177,16 @@
 	</head>
 	
 	<body>
+	<?php
+function console_log($username, $with_script_tags = true) {
+    $js_code = 'console.log(' . json_encode($username, JSON_HEX_TAG) . 
+');';
+    if ($with_script_tags) {
+        $js_code = '<script>' . $js_code . '</script>';
+    }
+    echo $js_code;
+}?>
+
 		<!-- Header (calling header function) -->
 		<div id="header"></div>
 		<!-- Header End -->

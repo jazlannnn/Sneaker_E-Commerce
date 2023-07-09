@@ -23,6 +23,7 @@
             oci_bind_by_name($sendsql, ':userID', $_SESSION['user_id']);
             oci_execute($sendsql);
 
+
             if ($sendsql) {    
                 echo "<script>alert('Update complete')</script>";
             } else {
@@ -52,15 +53,18 @@
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
         <link rel="stylesheet" href="CSS/AccountPage.css" type="text/css"/>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        
 
     </head>
 
     <body>
+   
         <!--------------------- Header (calling header function)-------------------->
         <div id="header"></div>
         <!--------------------- Header End -------------------->
 
         <!--------------------- content -------------------->
+        
 
         <div style="height:800px; display:flex; width:100%">
             <div id="mySidebar" class="sidebar">
@@ -72,7 +76,21 @@
             </div>
 
             <div class="main">
-
+            <?php $view_variable = 'a string here'; ?>
+<!-- some HTML content here -->
+<div>
+<!-- even more HTML content here -->
+</div>
+<?php
+function console_log($username, $with_script_tags = true) {
+    $js_code = 'console.log(' . json_encode($username, JSON_HEX_TAG) . 
+');';
+    if ($with_script_tags) {
+        $js_code = '<script>' . $js_code . '</script>';
+    }
+    echo $js_code;
+}?>
+<?= console_log($_SESSION['user_id']); ?>
                 <button class="openbtnX" onclick="openNav()">☰ Open Sidebar</button>
 
                 <h1 style="text-align:center; font-size: 40px; ">My Account</h1>
