@@ -195,7 +195,7 @@
 				
 				<div class="loginDiv"> 
 					<div style="width:90%;margin-left: auto; margin-right: auto; text-align:center"><br>
-						<img src="Images/Image for users/WHITE CANVAS - LOGO.png" style="width:45%;"/>
+						<img src="Images/Image for users/kroneakers-logo.jpg" style="width:45%;"/>
 						
 						<!-- FORM -->
 						<form action="" method="post">
