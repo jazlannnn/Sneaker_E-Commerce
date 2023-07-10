@@ -77,6 +77,7 @@
 		
 		$userID = $_SESSION["user_id"]; // retrieve user id
 
+		
 		// select customer info
 		$sql = "SELECT * FROM customer WHERE Customer_ID = $userID"; 
 		$result = oci_parse($dbconn, $sql);
@@ -93,17 +94,27 @@
 			"query fail";
 		
 		// create order table for the customer
-		$date = date("Y/m/d");
+		$date = date("d-M-y");
 		$sql = "INSERT INTO orders (Orders_Date, Orders_TotalPrice, Orders_CustomerFK)
-				VALUES ('$date', '$TotalPrice', '$customerid')";
+				VALUES ('$date', '$TotalPrice', '$customerid') 
+				returning Orders_id into :id"; 
 		
 		$sendsql = oci_parse($dbconn, $sql);
+		oci_bind_by_name($sendsql, ":id", $idNumber);
 		oci_execute($sendsql);
-		
 		if($sendsql)
 		{	
-			//echo "success!";
-			$last_id = oci_fetch_assoc($dbconn); // return last newly created ID
+			echo "success!";
+			
+			$last_id = $idNumber; // return last newly created ID
+			function console_log($username, $with_script_tags = true) {
+				$js_code = 'console.log(' . json_encode($username, JSON_HEX_TAG) . 
+			');';
+				if ($with_script_tags) {
+					$js_code = '<script>' . $js_code . '</script>';
+				}
+				echo $js_code;
+			}
 			$_SESSION["order"] = $last_id;
 		}
 		else 

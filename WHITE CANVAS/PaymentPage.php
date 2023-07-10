@@ -34,7 +34,8 @@
 						$sql = "INSERT INTO `payment` (Payment_Proof, Payment_OrderFK)
 								VALUES ('$fileDestination','$OrderID')";
 		
-						$sendsql = mysqli_query($connect, $sql);
+						$sendsql = oci_parse($dbconn, $sql);
+						oci_execute($sendsql);
 		
 						if($sendsql)
 						{	
@@ -136,21 +137,22 @@
 											orders.Orders_ID LIKE '$_SESSION[order]'"; 
 										
 								// display user order			
-								$result = mysqli_query($connect, $sql);
+								$result = oci_parse($dbconn, $sql);
+								oci_execute($result);
 		
 								if($result)
 								{
-									if(mysqli_num_rows($result) > 0)
+									if($result > 0)
 									{	
-										while($row = mysqli_fetch_assoc($result)){
+										while($row = oci_fetch_row($result)){
 												
 										echo"<ol class='listStyle'>
-												<li><b>Username     :</b> $row[Customer_Username] </li>
-												<li><b>Email        :</b> $row[Customer_Email] </li> 
-												<li><b>Phone num   :</b> $row[Customer_PhoneNumber] </li> 
-												<li><b>Address      :</b> $row[Customer_Address] </li>
-												<li><b>Date ordered :</b> $row[Orders_Date] </li>													
-												<li><b>Total charge :</b> RM $row[Orders_TotalPrice]</li>
+												<li><b>Username     :</b> $row[0] </li>
+												<li><b>Email        :</b> $row[1] </li> 
+												<li><b>Phone num   :</b> $row[2] </li> 
+												<li><b>Address      :</b> $row[3] </li>
+												<li><b>Date ordered :</b> $row[4] </li>													
+												<li><b>Total charge :</b> RM $row[5]</li>
 											</ol>
 											<hr>
 											

@@ -1,3 +1,4 @@
+lol
 <?php
    include "config.php";
 
