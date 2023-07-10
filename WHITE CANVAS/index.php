@@ -41,7 +41,7 @@
 		<!--------------------- Header End -------------------->
 		
 		<!--------------------- Welcome -------------------->
-		<div style="text-align:center"><img style="width:100%" src="Images/Image for users/Header.png"/></div><br><br>
+		<div style="text-align:center"><img style="width:100%" src="Images/Image for users/KRONEAKERS HEADER.jpg"/></div><br><br>
 			
 		<!--------------------- Slideshow container ---------------------->
 		<div style="width: 100%; background-color: white; height:80%">
@@ -157,21 +157,21 @@
 		<div class="slideshow-container">
 
 			<div class="mySlides">
-				<div style="text-align:center"><img style="width:15%" src="Images/reviewers/Fitri.png"/></div><br>
-				<q>I may be cheap but the quality and pricing is affordable, worth shopping here.</q>
-				<p class="author">- Fitri Rafie</p>
+				<div style="text-align:center"><img style="width:15%" src="Images/reviewers/1.png"/></div><br>
+				<q>This shoe store is lit. They have the most fire shoes for every vibe, and the staff is super chill and helpful. I always cop something fresh here, and the prices are legit too.</q>
+				<p class="author">Tiara</p>
 			</div>
 
 			<div class="mySlides">
-				<div style="text-align:center"><img style="width:15%" src="Images/reviewers/Elon.png"/></div><br>
+				<div style="text-align:center"><img style="width:15%" src="Images/reviewers/2.png"/></div><br>
 				<q>Love the variety offered here, plan on investing to bring this company to Mars.</q>
-				<p class="author">- Elon Musk</p>
+				<p class="author">Joe Flizow</p>
 			</div>
 
 			<div class="mySlides">
-				<div style="text-align:center"><img style="width:15%" src="Images/reviewers/Acab.png"/></div><br>
+				<div style="text-align:center"><img style="width:15%" src="Images/reviewers/3.png"/></div><br>
 				<q>Worth every penny, with authentic sneakers and affordable.</q>
-				<p class="author">- Acab </p>
+				<p class="author">Mk </p>
 			</div>
 			
 			<a class="prev" onclick="plusSlides(-1)">❮</a>

@@ -1,6 +1,5 @@
 <?php
 
-	session_start();
 	/* php & Oracle DB connection file */
 	$user="whitecanvas"; //Oracle username
 	$pass="system"; //Oracle password

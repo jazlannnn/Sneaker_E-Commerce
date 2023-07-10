@@ -1,6 +1,9 @@
 <link rel="stylesheet" href="CSS/GeneralStyling.css" type="text/css" />
 <?php
 
+	include "config.php";
+
+
 	// Stores all related fucntions
 	//----------------------------------------------------------------------------
 	
@@ -69,42 +72,46 @@
 	}
 	
 	// function to view order details on view details page 
-	function GetOrderDetails($Order_ID){
+	function GetOrderDetails($Order_ID) {
+    global $dbconn;
+    
+    $sql = "SELECT
+                Product_Name,
+                OrderDetails_Size,
+                OrderDetails_Quantity,
+                Product_Price,
+                OrderDetails_SubTotal,
+                Orders_TotalPrice,
+                Orders_Date,
+                Product_Image,
+                Payment_Proof
+            FROM
+                order_details
+                INNER JOIN orders ON orders.Orders_ID = order_details.OrderDetails_OrderFK
+                INNER JOIN product ON product.Product_ID = order_details.OrderDetails_ProductFK
+                INNER JOIN customer ON customer.Customer_ID = orders.Orders_CustomerFK
+                INNER JOIN payment ON payment.Payment_OrderFK = orders.Orders_ID
+            WHERE
+                orders.Orders_ID LIKE :order_id";
+
+    $stmt = oci_parse($dbconn, $sql);
+    oci_bind_by_name($stmt, ":order_id", $Order_ID);
+    oci_execute($stmt);
+    
+    return $stmt;
+}
 		
-		include "config.php";
+		// if($result)
+		// {
+		// 	if(mysqli_num_rows($result) > 0)
+		// 	{	
+		// 		return $result; 								
+		// 	}
+		// 	else 
+		// 		"query fails"; 
+		// }
 		
-		$sql = "SELECT
-					Product_Name,
-					OrderDetails_Size,
-					OrderDetails_Quantity,
-					Product_Price,
-					OrderDetails_SubTotal,
-					Orders_TotalPrice,
-					Orders_Date,
-					Product_Image,
-					Payment_Proof
-				FROM
-					order_details
-					INNER JOIN orders ON orders.Orders_ID = order_details.OrderDetails_OrderFK
-					INNER JOIN product ON product.Product_ID = order_details.OrderDetails_ProductFK
-					INNER JOIN customer ON customer.Customer_ID = orders.Orders_CustomerFK
-					INNER JOIN payment ON payment.Payment_OrderFK = orders.Orders_ID
-				WHERE
-					orders.Orders_ID LIKE '$Order_ID'";
-					
-		$result = mysqli_query($connect,$sql);
-		
-		if($result)
-		{
-			if(mysqli_num_rows($result) > 0)
-			{	
-				return $result; 								
-			}
-			else 
-				"query fails"; 
-		}
-		
-	}
+	
 	
 	// function logout alert
 	function Logout(){
@@ -114,4 +121,6 @@
 		";
 		echo $element;
 	}
+
+	oci_close($dbconn);
 ?>
