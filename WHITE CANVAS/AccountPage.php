@@ -1,4 +1,5 @@
-<<<<<<< master
+
+
 <?php
    include "config.php";
 
@@ -269,7 +270,7 @@
 
     </body>
 </html>
-=======
+
 <?php
 	include "config.php";
 	
@@ -491,4 +492,4 @@
 		
 	</body>
 </html>
->>>>>>> master
+
