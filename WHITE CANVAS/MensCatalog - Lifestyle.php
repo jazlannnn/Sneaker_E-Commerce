@@ -1,10 +1,13 @@
 <?php
 	// import database
+    
 	include "config.php";
 	//import function
+    
 	require_once('Function.php');
-
+    
     // add item to cart
+    
     if (isset($_POST['Add'])) {
         // if session already have been created
         if (isset($_SESSION['user_id'])) {

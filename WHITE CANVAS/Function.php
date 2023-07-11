@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="CSS/GeneralStyling.css" type="text/css" />
 <?php
 
-	include "config.php";
+
 
 
 	// Stores all related fucntions
@@ -74,6 +74,7 @@
 	// function to view order details on view details page 
 	function GetOrderDetails($Order_ID) {
     global $dbconn;
+	include "config.php";
     
     $sql = "SELECT
                 Product_Name,
@@ -92,7 +93,7 @@
                 INNER JOIN customer ON customer.Customer_ID = orders.Orders_CustomerFK
                 INNER JOIN payment ON payment.Payment_OrderFK = orders.Orders_ID
             WHERE
-                orders.Orders_ID LIKE :order_id";
+                orders.Orders_ID = :order_id";
 
     $stmt = oci_parse($dbconn, $sql);
     oci_bind_by_name($stmt, ":order_id", $Order_ID);
@@ -122,5 +123,4 @@
 		echo $element;
 	}
 
-	oci_close($dbconn);
 ?>

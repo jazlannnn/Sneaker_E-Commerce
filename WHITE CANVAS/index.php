@@ -9,6 +9,8 @@
 		}
 		echo $js_code;
 	}
+
+	
 	
 	if(isset($_SESSION['user_id']))
 		console_log("kenaaa"); 

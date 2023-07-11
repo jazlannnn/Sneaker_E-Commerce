@@ -31,7 +31,7 @@
 						move_uploaded_file($fileTmpName, $fileDestination);
 						//header("Location: index.php?uploadsuccess");
 					
-						$sql = "INSERT INTO `payment` (Payment_Proof, Payment_OrderFK)
+						$sql = "INSERT INTO payment (Payment_Proof, Payment_OrderFK)
 								VALUES ('$fileDestination','$OrderID')";
 		
 						$sendsql = oci_parse($dbconn, $sql);
