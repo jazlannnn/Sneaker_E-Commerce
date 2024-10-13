@@ -120,7 +120,7 @@ Administrator
 ![screencapture-localhost-8000-Sneaker-E-Commerse-WHITE-CANVAS-adminOrders-php-2023-07-11-17_30_10](https://github.com/user-attachments/assets/773effe1-48b2-480a-8d1a-5d0685d863f4)
 - Admin Order Page
 
-![screencapture-localhost-8000-Sneaker-E-Commerse-WHITE-CANVAS-adminInventory-php-2023-07-11-17_34_59](https://github.com/user-attachments/assets/584ff39f-4de4-4e16-aeca-dd4c8c383d42)
+![Screenshot 2024-10-14 004458](https://github.com/user-attachments/assets/648661a1-5c36-40b2-b9c9-f0bdb1f1e330)
 - Admin Inventory Page
 
 ![screencapture_localhost_8000_Sneaker_E_Commerse_WHITE_CANVAS_adminAccount](https://github.com/user-attachments/assets/0c77f5d1-a2bc-44ce-86ac-b26df7bc9614)
