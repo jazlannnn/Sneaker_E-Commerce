@@ -1,0 +1,1413 @@
+	*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+}
+
+/*-----------------------Navigation sidebar------------------------------*/
+.sidebar {
+	height: 100%;
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	background-color: #111;
+	overflow-x: hidden;
+	transition: 0.5s;
+	padding-top: 20px;
+}
+
+.nav-icon{
+	display: flex;
+}
+.nav-column{
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+.sidebar a {
+	padding: 13px 2px 2px 32px;
+	text-decoration: none;
+	font-size: 18px;
+	color: #818181;
+	display: block;
+	transition: 0.3s;
+	margin-right:30px;
+}
+
+.sidebar a p{
+	float:right;
+	padding-left:15px;
+}
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+	position: absolute;
+	top: 0;
+	right: 0px;
+	font-size: 36px;
+	margin-left: 50px;
+}
+
+.logo-image{
+    width: 190px;
+    height: 114px;
+    margin-left: 15px;
+    background-size: cover;
+}
+
+.img-icon{
+	padding-top:10px;
+	width:35px;
+	height:38px;
+}
+.openbtn {
+	font-size: 20px;
+	cursor: pointer;
+	background-color: #111;
+	color: white;
+	padding: 10px 15px;
+	border: none;
+	margin-top:20px;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+/* On smaller screens, where height is less than 450px,change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+
+/*-------------------------Header------------------------*/
+.admin-header{
+	width:100%;
+	height: 60px;
+}
+.admin-name{
+	float: right;	
+}
+.admin-name h3{
+	float: right;
+	padding: 20px 30px 0 20px;
+	font-size: 25px;
+}
+/*--------------------------Body------------------------*/
+#main{
+  transition: margin-left .5s;
+  padding: 16px;
+}
+/*======================DASHBOARD PAGE================================*/
+.dashboard-container{
+	height:800px;
+	width:100%;
+}
+.dashboard-row{
+	width:100%;
+	height: 220px;
+	margin-top:30px;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.info-col{
+	width: 220px;
+	height: 120px;
+	padding:20px 0px 0px 30px;
+	display: flex;
+	border: 3px solid black;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	transition: transform .2s;
+}
+.info-col-2{
+	width: 275px;
+	height: 120px;
+	padding:20px 0px 0px 30px;
+	display: flex;
+	border: 3px solid black;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);	
+	transition: transform .2s;
+}
+
+.info-col:hover, .info-col-2:hover{	
+  -ms-transform: scale(1.2); 
+  -webkit-transform: scale(1.2); 
+  transform: scale(1.2); 
+}
+
+.text p{font-size: 22px;}
+.text p span{color: black}
+.icon-image{padding-top:10px;}
+
+
+.list-row{
+	display:flex;
+	position: relative;
+}
+.list-row h2{
+	padding-left:27px;
+	font-size: 28px;
+	color: #009879;
+}
+
+.styled-table tbody{	/*general use*/
+	display:block;
+	overflow:auto;
+	height:450px;
+	width:100%;
+}
+
+
+.styled-table thead tr { /*general use*/
+    background-color: #009879;
+    color: #ffffff;
+	display:block;
+
+}
+
+.styled-table td { /*general use*/
+	padding: 15px 0px;
+	width:350px;
+} 
+
+.styled-table tbody tr { /*general use*/
+	background-color: #D3D3D3;
+    border-bottom: 2px solid #dddddd;
+	height:60px;
+	
+}
+
+.recentOrders-col .styled-table th{
+	padding: 12px 35px 12px 25px;	
+} 
+.recentOrders-col .styled-table td{
+	padding:0px 10px 0px 10px;
+}
+.userDetails-col .styled-table td{
+	padding: 0px 0px 0px 32px;
+}
+.userDetails-col .styled-table th{
+	padding: 12px 0px 12px 40px;
+}
+
+/*general use*/
+.styled-table tbody tr:nth-of-type(odd) {background-color: #f3f3f3;}
+
+.styled-table tbody tr:last-of-type { border-bottom: 2px solid #009879;}
+
+.styled-table tbody tr.active-row {color: #009879;}
+
+/*--------------Graph --------------*/
+.graphContainer{
+	height:500px;
+	width:80%;
+	margin-left: 146px;
+	border: 1px solid black;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-family: "fira-sans-2", Verdana, sans-serif;
+	background-color:rgba(46, 43, 43, 0.082);
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  }
+  
+  #q-graph {
+	display: block; /* fixes layout wonkiness in FF1.5 */
+	position: relative; 
+	width: 600px; 
+	height: 300px;
+	margin: 1.1em 0 0; 
+	padding: 0;
+	background: transparent;
+	font-size: 11px;
+  }
+  
+  #q-graph caption {
+    caption-side: top;
+    width: 600px;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    top: -61px;
+    left: -59px;
+    position: relative;
+    z-index: 10;
+    font-weight: bold;
+  }
+  
+  #q-graph tr, #q-graph th, #q-graph td { 
+	position: absolute;
+	bottom: 0; 
+	width: 150px; 
+	z-index: 2;
+	margin: 0; 
+	padding: 0;
+	text-align: center;
+	font-size:15px;
+  }
+  
+  #q-graph td {
+	transition: all .3s ease;
+   }
+   
+  #q-graph td:hover {
+	background-color: #ca2525;
+	opacity: 0.9;
+	color: white;
+  }
+  
+  #q-graph thead tr {
+	left: 80%; 
+	top: 50%; 
+	bottom: auto;
+	margin: -2.5em 0 0 5em;
+}
+  #q-graph thead th {
+	width: 7.5em; 
+	height: auto; 
+	padding: 0.5em 1em;
+  }
+  #q-graph thead th.male {
+	top: 0; 
+	left: 0; 
+	line-height: 2;
+  }
+  #q-graph thead th.female {
+	top: 2.75em; 
+	line-height: 2;
+	left: 0; 
+  }
+  
+  #q-graph tbody tr {
+	height: 296px;
+	padding-top: 2px;
+	border-right: 1px dotted #C4C4C4; 
+	color: #AAA;
+  }
+  #q-graph #q1 {
+	left: 0;
+  }
+  #q-graph #q2 {left: 150px;}
+  #q-graph #q3 {left: 300px;}
+  #q-graph #q4 {left: 450px; border-right: none;}
+  #q-graph tbody th {bottom: -1.75em; vertical-align: top;
+  font-weight: normal; color: #333;}
+  #q-graph .bar {
+	width: 60px; 
+	border: 1px solid; 
+	border-bottom: none; 
+	color: #000;
+  }
+  #q-graph .bar p {
+	margin: 5px 0 0; 
+	padding: 0;
+	opacity: .4;
+  }
+  #q-graph .male {
+	left: 13px; 
+	background-color: #02352b;
+	border-color: transparent;
+  }
+  #q-graph .female {
+	left: 77px; 
+	background-color: #009879;
+	border-color: transparent;
+  }
+  
+  #ticks {
+	position: relative; 
+	top: -300px; 
+	left: 2px;
+	width: 596px; 
+	height: 300px; 
+	z-index: 1;
+	margin-bottom: -300px;
+	font-size: 10px;
+	font-family: "fira-sans-2", Verdana, sans-serif;
+  }
+  
+  #ticks .tick {
+	position: relative; 
+	border-bottom: 1px dotted #C4C4C4; 
+	width: 600px;
+  }
+  
+  #ticks .tick p {
+	position: absolute; 
+	left: -5em; 
+	top: -0.8em; 
+	margin: 0 0 0 0.5em;
+  }
+
+/*=============================SALES PAGE================================*/
+
+.sales-container{	
+	height:1300px;
+	margin-left: 50px;
+}
+.sales-container h2 {
+	font-size: 25px;
+}
+.profit-row{
+	display:flex;
+	width: 100%;
+	height: 500px;
+}
+.profit-group{
+	width: 350px;
+	height: 450px;
+	border: 3px solid black;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	background:#C1F6ED;
+}
+.total-profit{
+	display:flex;
+	margin-top: 20;
+}
+.profit-text{
+	padding-top:20px;
+	height:100px;
+}
+.profit-text p{
+	font-size: 25px;
+	color: red;
+	padding-left:30px;
+}
+
+.profit-text p span{
+	font-size: 20px;
+	color: black;
+	font-family: cambria;
+}
+.profit-col{
+	padding:20px 0px 0px 30px;
+	display:flex;
+	flex-direction: column;
+}
+.col-group{
+	display:flex;
+	flex-direction: column;
+}
+.progress-sales{
+	margin-top:56px;
+	margin-left:25px;
+
+}
+.progress-sales h3{
+	font-size: 16px;
+}
+.ProgressBar{
+	height: 10px;
+	width:230px;
+	background-color: white;
+	border-radius: 15px;
+}
+
+.LowerProgressBar{
+	height: 10px;
+	color: white;
+	background-color: #11324D;
+	border-radius: 15px;
+}
+
+.sales-text p{
+	font-size: 22px;
+	padding-top:10px;
+}
+.item-group{
+	display:flex;
+	flex-direction: column;
+	justify-content: space-around;
+	margin-left:200px;
+	margin-bottom:40px;
+}
+
+.item-info{
+	width: 250px;
+	height: 120px;
+	padding: 11px 0px 0px 19px;
+	display: flex;
+	border: 3px solid black;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	transition: transform .2s;
+}
+
+.item-info:hover{	
+  -ms-transform: scale(1.2); 
+  -webkit-transform: scale(1.2); 
+  transform: scale(1.2); 
+}
+/*-----------table sales --------*/
+
+.salesList-row {
+	display:flex;
+}
+.salesList-row h2{
+	padding-left:22px;
+}
+
+.recentSales-col{
+	height: 600px;
+	width: 820px;
+	border: 2px solid black;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.recentSales-col .styled-table{
+    border-collapse: collapse;
+	margin: 15px 20px 0 27px;
+    font-size: 15px;
+    font-family: sans-serif;
+	
+}
+.topProduct-col{
+	height: 450px;
+	width: 350px;
+	margin-left:60px;
+	border: 2px solid black;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);	
+}
+
+.topProduct-col .styled-table {
+    border-collapse: collapse;
+    margin: 15px 50px 0 27px;
+    font-size: 15px;
+    font-family: sans-serif;
+}
+
+.topProduct-col .styled-table th{
+	padding: 12px 0px 12px 40px;
+}
+.recentSales-col .styled-table th{
+	padding: 12px 40px;
+	
+} 
+.recentSales-col .styled-table td,
+.topProduct-col .styled-table td{
+	padding-left:20px;
+}
+/*===================Customer page====================*/
+
+.cust-container{
+	height:900px;
+	margin-left: 30px;
+}
+.cust-number{
+	height: 120px;
+	display:flex;
+}
+.cust-number h3{
+	font-family:Cambria;
+	font-size: 40px;
+	color: red;
+}
+.cust-image{
+	height: 70px; 
+	width: 75px; 
+	margin: 30px 0 0 30px;
+}
+
+.search-text { /*general use*/
+	font-size: 25px;
+	font-family:cambria;
+}
+.search input[type=text] { /*general use*/
+  width: 160px;
+  height:40px;
+  border: 1px solid black;
+  border-radius:8px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+  margin-left:10px;
+}
+
+/* When the input field gets focus, change its width to 100% */
+.search input[type=text]:focus {
+  width: 23%;
+}
+/*-------------table cust ---------*/
+.cust-table h2{
+	padding-left:30px;
+}
+
+.cust-col{
+	margin-top:50px;
+	height: 600px;
+	width: 1200px;
+	border: 2px solid black;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.cust-col .styled-table{
+    border-collapse: collapse;
+	margin: 15px 27px 0 27px;
+    font-size: 15px;
+    font-family: sans-serif;
+    min-width: 1100px;
+}
+
+.cust-col .styled-table tbody tr .user-img{
+	height:40px;
+	width:40px;
+	cursor:pointer;
+}
+.cust-col .styled-table th{
+	padding: 12px 20px;
+}
+.cust-col .styled-table td{
+	padding: 30px 20px 37px 40px;
+}
+.wrap {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+  }
+
+  [data-tooltip] {
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+    width: initial;
+  }
+  
+  /* Hide the tooltip content by default */
+  [data-tooltip]:before,
+  [data-tooltip]:after {
+    visibility: hidden;
+    pointer-events: none;
+  }
+  
+  /* Position tooltip above the element */
+  [data-tooltip]:before {
+    position: absolute;
+    top: 110%;
+    left: 35%;
+    margin-bottom: 10px;
+    margin-left: -38px;
+    padding: 5px 5px;
+    width: 60px;
+    background-color: #1f503e;
+    color: #fff;
+    content: attr(data-tooltip);
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.2;
+  }
+  
+  /* Triangle hack to make tooltip look like a speech bubble */
+  [data-tooltip]:after {
+    position: absolute;
+    top: 90%;
+    left: 24%;
+    margin-left: -7px;
+    margin-bottom: 3px;
+    width: 0;
+    border-top: 7px solid #1f503e;
+    border-right: 7px solid transparent;
+    border-left: 7px solid transparent;
+    content: " ";
+    font-size: 0;
+    line-height: 0;
+  }
+  
+  /* Show tooltip content on hover */
+  [data-tooltip]:hover:before,
+  [data-tooltip]:hover:after {
+    visibility: visible;
+  
+  }
+.styleBtn{
+	width: 80px;
+	height: 45px;
+	font-family: 'Roboto', sans-serif;
+	font-size: 11px;
+	text-transform: uppercase;
+	letter-spacing: 2.5px;
+	font-weight: 500;
+	color: #000;
+	background-color: #fff;
+	border: none;
+	border-radius: 45px;
+	box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+	transition: all 0.3s ease 0s;
+	cursor: pointer;
+	outline: none;
+}
+.styleBtn:hover {
+	background-color: #db3737;
+	box-shadow: 0px 15px 20px rgba(255, 93, 93, 0.4);
+	color: #fff;
+	transform: translateY(-7px);
+  }
+
+  /*-----------Pop up Customer details ------------*/
+.CustomerOuterContainer{
+	background-color: white;
+	width: 800px;
+    height: 800px;
+	display:none;
+}
+
+.customer-details{
+	color: #1F2833;
+    position: absolute;
+	top: 650px;
+    left: 705px;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    height: 600px;
+    background-color: white;
+    box-sizing: border-box;
+    padding: 9px;
+    z-index: 100;
+    border-style: groove;
+	box-shadow:0 0 4px rgba(0,0,0,0.3); 
+}
+
+.customer-details .InnerContainer{
+	background-color: white;
+	margin-left: 100px;
+    margin-right: auto;
+	padding: 5px;
+}
+
+/*============================Orders page================================*/
+
+.orders-container{
+	height:950px;
+	margin-left: 60px;
+}
+.orders-number{
+	height: 120px;
+	display:flex;
+}
+.orders-number h3{
+	font-family:Cambria;
+	font-size: 40px;
+	color: red;
+}
+.orders-image{
+	height: 80px; 
+	width: 120px; 
+	margin: 30px 0 0 0px;
+}
+
+/*-----------Pop up payment details ------------*/
+.PaymentOuterContainer{
+	height:150%;
+	width: 100%;
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	background-color: rgba(8, 8, 8, 0.253);
+	display:none;
+			  
+}
+
+.payment-details{
+	color: #1F2833;
+    position: absolute;
+	top: 510px;
+    left: 705px;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    height: 1000px;
+    background-color: white;
+    box-sizing: border-box;
+    padding: 9px;
+    z-index: 100;
+    border-style: groove;
+	box-shadow:0 0 4px rgba(0,0,0,0.3); 
+}
+
+.payment-details .InnerContainer{
+	background-color: white;
+	margin-left: 130px;
+    margin-right: auto;
+	padding: 5px;
+	display:flex;
+	flex-direction:column;
+}
+.payment-details ul li {
+	font-family:cambria;
+	font-size:20px;
+	padding-top:5px;
+}
+.payment{
+	width:440px;
+	height:650px;
+	margin-left:38px;
+	border:3px solid black
+}
+/*-------------table orders ---------*/
+.orders-table h2{
+	padding-left:50px;
+}
+
+.orders-col{
+	margin-top:30px;
+	height: 600px;
+	width: 900px;
+	border: 2px solid black;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.orders-col .styled-table{
+    border-collapse: collapse;
+	margin: 15px 27px 0 27px;
+    font-size: 15px;
+    font-family: sans-serif;
+    min-width: 850px;
+}
+
+.orders-col .styled-table thead th{
+    padding: 20px 0 15px 20px;
+}
+
+.orders-col .styled-table tbody td{
+    padding-top: 10px;
+	padding-left: 35px;
+}
+
+.orders-col .table-fixed tbody{	
+	display:block;
+	height:450px;
+	overflow-y:auto;	
+}
+
+#button-status{
+	height: 35px;
+    width: 100px;
+    background: #FF6863;
+	color:white;
+	border-radius:10px;
+	border:1px solid white;
+	padding:5px;
+	position: relative;
+}
+
+#button-status:hover{
+	cursor:pointer;
+}
+
+#button-submit{
+    height: 35px;
+    width: 70px;
+    background: orange;
+	color:white;
+	border-radius:10px;
+	border:1px solid white;
+}
+
+#button-submit:hover{
+	background:red;
+	cursor:pointer;
+}
+/*===================Inventory page====================*/
+
+.inventory-container{
+	height:1800px;
+	margin-left: 90px;
+}
+.inventory-number{
+	height: 120px;
+	display:flex;
+}
+.inventory-number h3{
+	font-family:Cambria;
+	font-size: 40px;
+	color: red;
+}
+.inventory-image{
+	height: 80px; 
+	width: 120px; 
+	margin: 30px 0 0 20px;
+}
+.inventory-container .search input[type=number] { 
+	width: 68px;
+	height:40px;
+	border: 1px solid black;
+	border-radius:8px;
+	-webkit-transition: width 0.4s ease-in-out;
+	transition: width 0.4s ease-in-out;
+	margin-left:10px;
+  }
+  
+  /* When the input field gets focus, change its width to 100% */
+  .inventory-container .search input[type=number]:focus {
+	width: 10%;
+  }
+
+
+/*---search button ---*/
+.updating-button{
+    height: 40px;
+	margin-left:20px;
+    width: 80px;
+	background:orange;
+	border-radius:13px;
+	font-size:17px;
+	font-family:helvetica;
+}
+
+.updating-button:hover {
+  transition-duration: 0.4s;
+  background:red;
+}
+
+.group{
+	height:70px;
+	width: 100%;
+	display:flex;
+	justify-content:space-evenly;
+}
+.group .titleTable{
+	width:100%;
+}
+.group .titleTable h2{
+	font-family: cambria;
+	font-size:30px;
+	padding-left:55px;
+	padding-top:10px;
+}
+
+.btnContainer{
+	height: 45px;
+	width: 100%;
+	margin-top:20px;
+	position: sticky;
+	padding-left:45%;
+}
+.addBtn {
+	width: 180px;
+	height: 48px;
+	font-family: 'Roboto', sans-serif;
+	font-size: 11px;
+	text-transform: uppercase;
+	letter-spacing: 2.5px;
+	font-weight: 500;
+	color: rgb(255, 255, 255);
+	background-color: rgb(2, 78, 62);
+	border: none;
+	border-radius: 45px;
+	box-shadow: 0px 15px 20px rgba(88, 192, 150, 0.4);
+	transition: all 0.3s ease 0s;
+	cursor: pointer;
+	outline: none;
+	}
+  
+  .addBtn:hover {
+	background-color: #2EE59D;
+	box-shadow: 0px 15px 20px rgba(6, 129, 80, 0.4);
+	color: #fff;
+	transform: translateY(-7px);
+  }
+
+ /* -----------------pop up info -----------------*/
+ /* -------------update popup container ---------*/
+ .inventory-container .OuterContainer{
+	background-color: white;
+	width: 800px;
+    height: 700px;
+	display: none;
+}
+
+.updating-details{
+	color: #1F2833;
+    position: absolute;
+	top: 563px;
+    left: 705px;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    height: 510px;
+    background-color: white;
+    box-sizing: border-box;
+    padding: 9px;
+    z-index: 100;
+    border-style: groove;
+	box-shadow:0 0 4px rgba(0,0,0,0.3); 
+}
+
+.updating-details .InnerContainer{
+	background-color: white;
+	margin-left: 130px;
+    margin-right: auto;
+	padding: 5px;
+	display:flex;
+	flex-direction:column;
+}
+
+.input-quantity{
+	padding:17px;
+}
+
+
+.select select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: #949494;
+  border: none;
+  margin: 0;
+  width: 100%;
+  font-family: cambria; 
+  font-size: 22px;
+  padding-left:10px;
+  cursor:pointer;
+  outline: none;
+  border-radius:5px;
+}
+
+.select select::-ms-expand {
+  display: none;
+}
+
+.select {
+  display: grid;
+  grid-template-areas: "select";
+  align-items: center;
+  position: relative;
+  min-width: 15ch;
+  max-width: 30ch;
+  border: 1px solid var(--select-border);
+  border-radius: 0.25em;
+  padding: 0.25em 0.5em;
+  cursor: pointer;
+  line-height: 1.1;
+  background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+}
+.select select, .select::after {
+  grid-area: select;
+}
+.select:not(.select--multiple)::after {
+  content: "";
+  justify-self: end;
+  width: 0.8em;
+  height: 0.5em;
+  background-color: var(--select-arrow);
+  -webkit-clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+          clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+}
+
+select:focus + .focus {
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  border: 2px solid var(--select-focus);
+  border-radius: inherit;
+}
+
+.input-quantity input {
+  display:block;
+  width:260;
+  margin:10px 0;
+  font-family: cambria; 
+  font-size: 20px;
+  padding-left:10px;
+  border-radius:5px;
+}
+.type-2 {
+  background-color: #949494;
+  border:0;
+  box-shadow:0 0 4px rgba(0,0,0,0.3);
+  transition: .3s box-shadow;
+  height: 26px;
+}
+.type-2:hover {
+  box-shadow:0 0 4px rgba(0,0,0,0.5);
+}
+::-webkit-input-placeholder { color: black;}
+
+:-ms-input-placeholder {  color: black;}
+
+::placeholder {  color: black;}
+
+/* -------------update popup container ---------*/
+.addProduct .updateBtn{
+	margin-top:20px;
+	font-size: 20px;
+	width:110px;
+	background-color: #11324D;
+	color: white;
+	border: 2px solid #555555;
+}
+
+.addProduct .updateBtn:hover {background-color: #3e8e41}
+/*-------Content ----- */
+.addProductContainer {
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	background-color: rgba(0,0,0, 0.9);
+	display:none;
+  }
+.inv-table .addProductContainer{
+	background-color: white;
+	width: 800px;
+    height: 700px;
+}
+
+.addProduct-details{
+	color: #1F2833;
+    position: absolute;
+	top: 370px;
+    left: 805px;
+    transform: translate(-50%, -50%);
+	z-index: 1001;
+    width: 700px;
+    height: 575px;
+    background-color: white;
+    box-sizing: border-box;
+    padding: 9px;
+    z-index: 100;
+    border-style: groove;
+	box-shadow:0 0 4px rgba(0,0,0,0.3); 
+}
+
+.addProduct .InnerContainer{
+	background-color: white;
+	margin-left: 130px;
+    margin-right: auto;
+	padding: 5px;
+	display:flex;
+	flex-direction:column;
+}
+
+.input-quantity{
+	padding:17px;
+}
+
+/*------ Button inside popup ---- */
+.popupBtn{
+	margin-top:20px;
+	margin-right:30px;
+	width: 105px;
+	height: 45px;
+	font-family: 'Roboto', sans-serif;
+	font-size: 11px;
+	text-transform: uppercase;
+	letter-spacing: 2.5px;
+	font-weight: 550;
+	color: #000;
+	background-color: #e18686;
+	border: none;
+	border-radius: 15px;
+	box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+	transition: all 0.3s ease 0s;
+	cursor: pointer;
+	outline: none;
+}
+.popupBtn:hover {
+	background-color: #db3737;
+	box-shadow: 0px 15px 20px rgba(255, 93, 93, 0.4);
+	color: #fff;
+	transform: translateY(-7px);
+  }
+
+/*-----------table inventory --------*/
+.inv-table{
+	margin-top:50px;
+	height: 850px;
+	width: 1100px;
+	border: 2px solid black;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.inv-col .styled-table{
+    border-collapse: collapse;
+	margin: 25px 30px 0 45px;
+    font-size: 15px;
+    font-family: sans-serif;
+    min-width: 1000px;
+	
+}
+
+.inv-col .styled-table tbody{
+	display:block;
+	overflow:auto;
+	height:650px;
+	width:100%;
+}
+.inv-col .styled-table thead th{
+	padding: 33px 20px 25px 20px;
+}
+
+.inv-col .styled-table tbody td{
+    padding-top: 10px;
+	padding-left: 35px;
+
+}
+/*-----------Updated History inventory --------*/
+.admin-table h2{
+	padding-left:40px;
+	padding-top:10px;
+}
+
+.admin-col{
+	margin-top:50px;
+	height: 600px;
+	width: 950px;
+	border: 2px solid black;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.admin-col .styled-table{
+    border-collapse: collapse;
+	margin: 15px 27px 0 40px;
+    font-size: 15px;
+    font-family: sans-serif;
+    min-width: 850px;
+}
+
+.admin-col .styled-table th{
+	padding: 12px 20px;
+}
+.admin-col .styled-table td{
+	padding: 30px 20px 37px 40px;
+}
+/*===================MyAccount page====================*/
+/* --------- Main content -----------*/
+
+.main {
+	transition: margin-left .5s;
+	padding: 16px;
+	width:100%;
+	float: right;
+	height:1000px;
+  
+  }
+  
+  .accountContainer{
+	  width: 80%;
+	  height: 50%;
+	  margin-left: auto;
+	  margin-right: auto;
+	  display: flex;
+	  padding: 5px;
+  
+  }
+  
+  .RegisterDiv{
+	  width:70%; 
+	  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	  background-color:white;
+	  padding: 15px;
+  }
+  
+   /* Style the input container */
+  .input-container {
+	display: flex;
+	width: 100%;
+	margin-bottom: 15px;
+  }
+  
+  /* Style the form icons */
+  .icon {
+	padding: 10px;
+	background: white;
+	
+	color: black;
+	min-width: 50px;
+	text-align: center;
+  }
+  
+  /* Style the input fields */
+  .input-field1{
+	width: 47.5%;
+	padding: 10px;
+	outline: none;
+	float:left;
+  }
+  
+  .input-field2{
+	width: 47.5%;
+	padding: 10px;
+	outline: none;
+	float:right;
+  }
+  
+  .input-field:focus {
+	border: 2px solid dodgerblue;
+  }
+  
+  /* Set a style for the submit button */
+  .btn{
+	display: inline-block;
+	padding: 10px 60px;
+	font-size: 24px;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	outline: none;
+	color: #fff;
+	background-color: #3F72AF;
+	border: none;
+	border-radius: 15px;
+	box-shadow: 0 9px #999;
+  }
+  
+
+  .btn:hover {
+	background-color: #112D4E; 
+	color: white;
+  }
+  
+  /* --------- edit account -----------*/
+  
+  /* Full-width input fields */
+  .account input[type=text], .account input[type=password] {
+	width: 100%;
+	padding: 15px;
+	margin: 5px 0 22px 0;
+	display: inline-block;
+	border: none;
+	background: #f1f1f1;
+  }
+  
+  /* Add a background color when the inputs get focus */
+  .account input[type=text]:focus, .account input[type=password]:focus {
+	background-color: #ddd;
+	outline: none;
+  }
+  
+  /* Set a style for all buttons */
+  .updatebtn, .cancelbtn{
+	background-color: #04AA6D;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+	opacity: 0.9;
+  }
+  
+  .edit{
+	  margin-left: auto; 
+	  margin-right: auto;
+	  width: 50%;
+	  font-size:24px;
+	  padding: 10px 60px;
+	  cursor: pointer;
+	  text-decoration: none;
+	  outline: none;
+	  color: #fff;
+	  background-color: #3F72AF;
+	  border: none;
+	  border-radius: 15px;
+	  box-shadow: 0 9px #999;
+	  
+  }
+  
+  button:hover {
+	opacity:1;
+  }
+  
+  /* Extra styles for the cancel button */
+  .cancelbtn {
+	padding: 14px 20px;
+	background-color: #f44336;
+  }
+  
+  /* Float cancel and signup buttons and add an equal width */
+  .cancelbtn, .updatebtn {
+	float: left;
+	width: 50%;
+  }
+  
+  /* Add padding to container elements */
+  .containers {
+	padding: 22px;
+	text-align:center;
+	margin-left: auto;
+	 margin-right: auto;
+  }
+  
+  /* The Modal (background) */
+  .modal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: #474e5d;
+	padding-top: 50px;
+	margin-left: auto; 
+	margin-right: auto; 
+	text-align:center;
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+	background-color: #fefefe;
+	margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+	border: 1px solid #888;
+	width: 50%; /* Could be more or less, depending on screen size */
+	margin-left: auto; 
+	margin-right: auto; 
+	text-align:center;
+  }
+  
+  /* Style the horizontal ruler */
+  .modal-content hr {
+	border: 1px solid #f1f1f1;
+	margin-bottom: 25px;
+  }
+   
+  /* The Close Button (x) */
+  .close {
+	position: absolute;
+	right: 35px;
+	top: 15px;
+	font-size: 40px;
+	font-weight: bold;
+	color: #f1f1f1;
+  }
+  
+  .close:hover,
+  .close:focus {
+	color: #f44336;
+	cursor: pointer;
+  }
+  
+  /* Clear floats */
+  .clearfix::after {
+	content: "";
+	clear: both;
+	display: table;
+  }
+  
+  /* Change styles for cancel button and signup button on extra small screens */
+  @media screen and (max-width: 300px) {
+	.cancelbtn, .signupbtn {
+	   width: 100%;
+	}
+  }
+  
+  .listStyle li{
+	  
+	  margin-bottom:15px;
+	  font-size:18px;
+	  font-family:arial;
+  }
+  
+  
+  
+  
