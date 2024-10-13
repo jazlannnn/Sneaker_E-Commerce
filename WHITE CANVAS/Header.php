@@ -19,7 +19,7 @@
 		<div>
 			<header>
 				<!-- company logo -->
-				<img src="Images/Image for users/WHITE CANVAS - LOGO.png" style="width:13%;" />
+				<img src="Images/Image for users/kroneakers-logo.jpg" style="width:13%;" />
 				
 				<!-- Navigation -->
 				<div>

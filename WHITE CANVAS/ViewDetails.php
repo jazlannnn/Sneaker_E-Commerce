@@ -65,19 +65,19 @@
 									<th> <font face='Arial'>Subtotal(RM)</font> </th>
 									</tr>";	
 									
-						while ($row = mysqli_fetch_assoc($result)){
+						while ($row = oci_fetch_row($result)){
 						
 							echo 
 								"<tr> 
-									<td style='width:20%'><img src='$row[Product_Image]' style='width:65%; '></td> 
-									<td>$row[Product_Name]</td>
-									<td>$row[OrderDetails_Size]</td> 
-									<td>$row[OrderDetails_Quantity]</td> 
-									<td>RM $row[Product_Price]</td>
-									<td>RM $row[OrderDetails_SubTotal]</td>
+									<td style='width:20%'><img src='{$row[7]}' style='width:65%; '></td> 
+									<td>{$row[0]}</td>
+									<td>{$row[1]}</td> 
+									<td>{$row[2]}</td> 
+									<td>RM {$row[3]}</td>
+									<td>RM {$row[4]}</td>
 								</tr>";
-								$date = $row['Orders_Date'];
-								$TotalPrice = $row['Orders_TotalPrice'];
+								$date = $row[6];
+								$TotalPrice = $row[5];
 						}
 						
 						echo "

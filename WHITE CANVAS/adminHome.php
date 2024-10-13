@@ -29,6 +29,15 @@
         $_SESSION['TotalSales'] = $totalSales;
         $_SESSION['TotalOrders'] = $numOrder;
     }
+    function console_log($username, $with_script_tags = true) {
+        $js_code = 'console.log(' . json_encode($username, JSON_HEX_TAG) . 
+    ');';
+        if ($with_script_tags) {
+            $js_code = '<script>' . $js_code . '</script>';
+        }
+        echo $js_code;
+    }
+    console_log($_SESSION['adminID']);
 ?>
 
 <!DOCTYPE html>

@@ -83,6 +83,17 @@
 							<div style="width:80%;margin-left: auto; margin-right: auto;">
 								
 								<?php
+
+function console_log($username, $with_script_tags = true) {
+	$js_code = 'console.log(' . json_encode($username, JSON_HEX_TAG) . 
+');';
+	if ($with_script_tags) {
+		$js_code = '<script>' . $js_code . '</script>';
+	}
+	echo $js_code;
+}
+console_log($_SESSION['order']);
+console_log($_SESSION['user_id']);
 										// display user info 
 										$sql = "SELECT
 													Customer_Username,
@@ -122,16 +133,16 @@
 										{
 											if($result > 0)
 											{	
-												while(($row = oci_fetch_array($result))){
+												while(($row = oci_fetch_row($result))){
 												
 												echo"<ol class='listStyle'>
-													<li><b>Username     :</b> $row[Customer_Username] </li>
-													<li><b>Email        :</b> $row[Customer_Email] </li> 
-													<li><b>Phone num.   :</b> $row[Customer_PhoneNumber] </li> 
-													<li><b>Address      :</b> $row[Customer_Address] </li>
-													<li><b>Date ordered :</b> $row[Orders_Date] </li>			
+													<li><b>Username     :</b> $row[0] </li>
+													<li><b>Email        :</b> $row[1] </li> 
+													<li><b>Phone num.   :</b> $row[2] </li> 
+													<li><b>Address      :</b> $row[3] </li>
+													<li><b>Date ordered :</b> $row[5] </li>			
 													<li><b>Delivery charge :</b> RM 10.00</li>
-													<li><b>Total charge :</b> RM $row[Orders_TotalPrice]</li>
+													<li><b>Total charge :</b> RM $row[4]</li>
 													</ol>
 													<hr><br>
 													";		
@@ -158,15 +169,15 @@
 											{	
 												
 													
-												while(($row = oci_fetch_array($result2)))
+												while(($row = oci_fetch_row($result2)))
 												{
 													echo 
 													"<tr> 
-														<td>$row[Product_Name]</td> 
-														<td>$row[OrderDetails_Size]</td> 
-														<td>$row[OrderDetails_Quantity]</td>
-														<td>RM $row[Product_Price]</td> 				  
-														<td>RM $row[OrderDetails_SubTotal]</td>
+														<td>$row[0]</td> 
+														<td>$row[1]</td> 
+														<td>$row[2]</td>
+														<td>RM $row[3]</td> 				  
+														<td>RM $row[4]</td>
 													</tr>
 													";
 												}

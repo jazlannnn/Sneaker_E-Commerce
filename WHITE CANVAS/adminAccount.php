@@ -4,6 +4,7 @@
 	if(isset($_POST["Update_Button"]))
 	{
 		if(isset($_SESSION['adminID'])){
+			$adminID = $_SESSION['adminID'];
 			$username = $_POST["Username"];
 			$password = $_POST["Password"]; 
 			$Email = $_POST["Email"];
@@ -16,7 +17,7 @@
 			oci_bind_by_name($stmt, ':username', $username);
 			oci_bind_by_name($stmt, ':password', $password);
 			oci_bind_by_name($stmt, ':email', $Email);
-			oci_bind_by_name($stmt, ':adminID', $_SESSION['adminID']);
+			oci_bind_by_name($stmt, ':adminID', $adminID);
 			
 			$result = oci_execute($stmt);
 			
@@ -105,6 +106,15 @@
 						<hr style="width:100%">
 						
 						<?php
+						function console_log($username, $with_script_tags = true) {
+							$js_code = 'console.log(' . json_encode($username, JSON_HEX_TAG) . 
+						');';
+							if ($with_script_tags) {
+								$js_code = '<script>' . $js_code . '</script>';
+							}
+							echo $js_code;
+						}
+						console_log($_SESSION['adminID']);
 						
 						if(isset($_SESSION['adminID'])){
 							// display user info 
@@ -152,7 +162,7 @@
 						<div id="id01" class="modal">
 								<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
 								<div style="margin-left: auto; margin-right: auto; text-align:center;">
-								<form class="modal-content" action="AccountPage.php" method="post">
+								<form class="modal-content" action="adminAccount.php" method="post">
 									<div class="containers">
 										<h1>Update your account</h1>
 										<p>Please fill in the specific detail to update your account.</p>

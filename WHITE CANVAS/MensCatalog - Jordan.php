@@ -3,7 +3,7 @@
 	include "config.php";
 	//import function
 	require_once('Function.php');
-    
+
     // add item to cart
     if (isset($_POST['Add'])) {
         // if session has already been created
@@ -92,7 +92,7 @@
                     <!-- display product -->
                     <div style=" display:flex;">
                         <?php
-                            $sql = "SELECT * FROM product
+                            $sql = "SELECT PRODUCT_NAME,PRODUCT_PRICE,PRODUCT_IMAGE,PRODUCT_ID,PRODUCT_DESC FROM product
                                 WHERE Product_Gender = 'Men'
                                 AND Product_Category = 'Jordan'";
 
