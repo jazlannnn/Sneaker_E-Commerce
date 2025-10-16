@@ -1,7 +1,7 @@
 # KRONEAKERS Online Footwear Store System
 
-Project Overview: During my 3rd semsester of Degree, my colleagues and I developed the KRONEAKERS online footwear store system, a web-based application for KRONEAKERS, a Malaysian company specializing in trendy a
-nd high-quality shoes for both men and women. The company aimed to improve its data management processes for its extensive product range and growing customer base. 
+Project Overview: During my 3rd semsester of Degree, my colleagues and I developed the KRONEAKERS online footwear store system, a web-based application for KRONEAKERS, a Malaysian company specializing in trendy and 
+high-quality shoes for both men and women. The company aimed to improve its data management processes for its extensive product range and growing customer base. 
 The system was designed to efficiently manage inventory, streamline order processing, and track customer information to enhance overall customer satisfaction and business efficiency.
 
 Technologies Used: Oracle SQL Developer, PHP, CSS
